@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getDictionary } from '../i18n/utils';
+
+const dict = getDictionary('en');
+---
+
+<BaseLayout locale="en" dict={dict}>
+  <main class="min-h-screen flex items-center justify-center">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold">{dict.hero.name}</h1>
+      <p class="mt-2 text-lg">{dict.hero.role}</p>
+      <p class="mt-1 text-sm opacity-70">{dict.hero.location}</p>
+    </div>
+  </main>
+</BaseLayout>

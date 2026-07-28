@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getDictionary } from '../i18n/utils';
+
+const dict = getDictionary('en');
+---
+
+<BaseLayout locale="en" dict={dict} title="404 — Page not found">
+  <main class="min-h-screen flex items-center justify-center">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold">404</h1>
+      <p class="mt-2 text-lg">Page not found.</p>
+      <a href="/" class="mt-4 inline-block underline">Back home</a>
+    </div>
+  </main>
+</BaseLayout>

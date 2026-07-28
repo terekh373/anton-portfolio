@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+import { getAlternatePath, type Locale } from '../i18n/utils';
+import type { Dictionary } from '../i18n/dictionary';
+
+interface Props {
+  locale: Locale;
+  dict: Dictionary;
+  title?: string;
+  description?: string;
+}
+
+const { locale, dict, title, description } = Astro.props;
+
+const pageTitle = title ?? dict.meta.title;
+const pageDescription = description ?? dict.meta.description;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const enUrl = new URL(getAlternatePath(Astro.url.pathname, 'en'), Astro.site);
+const uaUrl = new URL(getAlternatePath(Astro.url.pathname, 'ua'), Astro.site);
+---
+
+<!doctype html>
+<html lang={locale === 'ua' ? 'uk' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="uk" href={uaUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
