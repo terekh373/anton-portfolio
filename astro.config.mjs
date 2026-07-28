@@ -4,6 +4,8 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
+import sitemap from '@astrojs/sitemap';
+
 // TODO: replace with the real domain once purchased.
 const SITE_URL = 'https://anton-tereshchenko.dev';
 
@@ -11,7 +13,7 @@ const SITE_URL = 'https://anton-tereshchenko.dev';
 export default defineConfig({
   site: SITE_URL,
   output: 'static',
-  integrations: [react()],
+  integrations: [react(), sitemap()],
   vite: {
     plugins: [tailwindcss()]
   },

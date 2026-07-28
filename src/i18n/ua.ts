@@ -29,7 +29,7 @@ export const ua: Dictionary = {
   work: {
     heading: 'Обрані проєкти',
     intro:
-      'Три проєкти — три різні задачі: керівництво командою, production-grade API та підтримка сервісу, що працює цілодобово.',
+      'Три проєкти, три різні задачі: керівництво командою, production-grade API та підтримка сервісу, що працює цілодобово.',
     viewCase: 'Детальніше про кейс',
     liveDemo: 'Живе демо',
     projects: [
@@ -40,7 +40,7 @@ export const ua: Dictionary = {
         role: 'Team Lead, команда з 4 розробників · дипломний проєкт',
         stack: ['TypeScript', 'NestJS', 'PostgreSQL', 'Prisma', 'Docker', 'REST API'],
         description: [
-          'Веду команду з чотирьох розробників — архітектура, дизайн REST API, схема бази даних, рев’ю через pull request.',
+          'Веду команду з чотирьох розробників: архітектура, дизайн REST API, схема бази даних, рев’ю через pull request.',
           'Спроєктував схему PostgreSQL: 30 моделей, 22 enum, міграції Prisma, seed-дані, Docker Compose.',
           'Написав повне технічне завдання, налаштував git flow команди, трекінг задач та двотижневі Scrum-спринти.'
         ],
@@ -73,8 +73,8 @@ export const ua: Dictionary = {
           'Full-stack скорочувач посилань: REST API на ASP.NET Core 8, SPA на Angular 17 (RxJS HttpClient + JWT-інтерцептор).',
           'Clean Architecture, SOLID, repository pattern, dependency injection на рівнях API / Core / Infrastructure / Tests.',
           'Рольовий доступ для Admin та User через ASP.NET Core Identity та JWT.',
-          'Пошук дублікатів, пошук і фільтрація — LINQ-запити через EF Core до SQL Server.',
-          '11 юніт-тестів на xUnit та Moq — рівні repository та controller.'
+          'Пошук дублікатів, пошук і фільтрація: LINQ-запити через EF Core до SQL Server.',
+          '11 юніт-тестів на xUnit та Moq: рівні repository та controller.'
         ],
         github: 'https://github.com/terekh373/urlshortener-aspnet-angular',
         slug: 'url-shortener',
@@ -103,7 +103,7 @@ export const ua: Dictionary = {
         role: 'Соло · працює цілодобово',
         stack: ['React 18', 'TypeScript', 'Redux', 'Node.js', 'Express', 'MongoDB', 'Socket.IO', 'JWT'],
         description: [
-          'Kanban-менеджер задач із колаборацією в реальному часі через WebSocket — зміни синхронізуються миттєво в усіх учасників дошки.',
+          'Kanban-менеджер задач із колаборацією в реальному часі через WebSocket: зміни синхронізуються миттєво в усіх учасників дошки.',
           'Повний цикл автентифікації (JWT + bcrypt), drag and drop, пріоритети, дедлайни, дашборд аналітики на Chart.js.',
           'Frontend на Vercel, backend на Render, база даних на MongoDB Atlas.'
         ],
@@ -221,7 +221,7 @@ export const ua: Dictionary = {
   },
   contact: {
     heading: 'Контакти',
-    intro: 'Відкритий до remote та outstaff у Європі та США. Найшвидший спосіб зв’язатися — email.',
+    intro: 'Відкритий до remote та outstaff у Європі та США. Найшвидший спосіб зв’язатися: email.',
     emailLabel: 'Email',
     phoneLabel: 'Телефон',
     cvLabel: 'Резюме',

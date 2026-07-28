@@ -8,7 +8,7 @@ const dict = getDictionary('en');
 
 <BaseLayout locale="en" dict={dict} title={`${dict.notFound.title} — ${dict.meta.title}`}>
   <Header locale="en" dict={dict} />
-  <main class="blueprint-grid flex min-h-[70vh] items-center justify-center px-4 text-center">
+  <main id="main-content" class="blueprint-grid flex min-h-[70vh] items-center justify-center px-4 text-center">
     <div>
       <p class="font-mono text-xs tracking-[0.2em] text-line uppercase">Error</p>
       <h1 class="mt-4 font-display text-6xl font-bold tracking-tight text-ink">{dict.notFound.title}</h1>

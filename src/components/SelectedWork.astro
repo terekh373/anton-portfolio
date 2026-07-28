@@ -13,9 +13,9 @@ const caseHref = (slug: string) => (locale === 'en' ? `/work/${slug}/` : `/ua/wo
 
 <section id="work" class="border-b border-grid">
   <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-    <div class="max-w-2xl">
+    <div>
       <h2 class="font-display text-2xl font-bold text-ink sm:text-3xl">{dict.work.heading}</h2>
-      <p class="mt-3 text-ink-dim">{dict.work.intro}</p>
+      <p class="mt-3 max-w-prose text-ink-dim">{dict.work.intro}</p>
     </div>
 
     <div class="mt-10 grid gap-6 lg:grid-cols-3">

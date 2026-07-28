@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anton-tereshchenko.dev/sitemap-index.xml
