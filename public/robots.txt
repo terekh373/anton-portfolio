@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://anton-tereshchenko.dev/sitemap-index.xml
+Sitemap: https://anton-portfolio-ten.vercel.app/sitemap-index.xml

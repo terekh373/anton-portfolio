@@ -13,7 +13,7 @@ export const GET: APIRoute = async ({ params }) => {
     name: dict.hero.name,
     tagline: dict.hero.tagline,
     tags: dict.skills.groups[0].items.slice(0, 4),
-    domain: 'anton-tereshchenko.dev'
+    domain: 'anton-portfolio-ten.vercel.app'
   });
 
   return new Response(new Uint8Array(png), {

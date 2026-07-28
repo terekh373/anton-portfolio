@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 // TODO: replace with the real domain once purchased.
-const SITE_URL = 'https://anton-tereshchenko.dev';
+const SITE_URL = 'https://anton-portfolio-ten.vercel.app';
 
 // https://astro.build/config
 export default defineConfig({
