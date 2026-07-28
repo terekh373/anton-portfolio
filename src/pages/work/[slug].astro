@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CaseStudyBody from '../../components/CaseStudyBody.astro';
+import { getDictionary } from '../../i18n/utils';
+import type { Project } from '../../i18n/dictionary';
+
+interface Props {
+  project: Project;
+}
+
+export function getStaticPaths() {
+  const dict = getDictionary('en');
+  return dict.work.projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+}
+
+const dict = getDictionary('en');
+const { project } = Astro.props;
+---
+
+<BaseLayout locale="en" dict={dict} title={`${project.title} — ${dict.hero.name}`} description={project.metaDescription}>
+  <Header locale="en" dict={dict} />
+  <CaseStudyBody dict={dict} locale="en" project={project} />
+  <Footer dict={dict} />
+</BaseLayout>

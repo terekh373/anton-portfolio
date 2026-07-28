@@ -1,0 +1,99 @@
+---
+import type { Dictionary, Project } from '../i18n/dictionary';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  dict: Dictionary;
+  locale: Locale;
+  project: Project;
+}
+
+const { dict, locale, project } = Astro.props;
+const backHref = locale === 'en' ? '/#work' : '/ua/#work';
+---
+
+<main>
+  <section class="blueprint-grid border-b border-grid">
+    <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-24">
+      <a href={backHref} class="font-mono text-xs text-ink-dim transition-colors hover:text-line">
+        {dict.caseStudy.backLink}
+      </a>
+
+      <p class="mt-6 font-mono text-xs tracking-[0.2em] text-line uppercase">{project.subtitle}</p>
+      <h1 class="mt-3 font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">{project.title}</h1>
+      <p class="mt-3 font-mono text-sm text-ink-dim">{project.period} · {project.role}</p>
+
+      <ul class="mt-6 flex flex-wrap gap-1.5">
+        {project.stack.map((tech) => (
+          <li class="rounded-sm border border-line-dim/50 px-2 py-0.5 font-mono text-[11px] text-ink-dim">{tech}</li>
+        ))}
+      </ul>
+
+      <div class="mt-8">
+        <p class="font-mono text-[11px] tracking-[0.15em] text-line uppercase">{dict.caseStudy.linksHeading}</p>
+        <div class="mt-2 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <a href={project.github} target="_blank" rel="noreferrer" class="font-mono text-sm text-ink-dim transition-colors hover:text-line">
+            {dict.caseStudy.githubLink} &rarr;
+          </a>
+          {project.demo && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center gap-1.5 rounded-sm bg-stamp px-3 py-1.5 font-mono text-sm text-bg"
+            >
+              <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-bg" aria-hidden="true" />
+              {dict.caseStudy.demoLink}
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-grid">
+    <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
+      <h2 class="font-display text-2xl font-bold text-ink">{dict.caseStudy.taskHeading}</h2>
+      <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink/90 sm:text-lg">{project.task}</p>
+    </div>
+  </section>
+
+  <section class="border-b border-grid">
+    <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
+      <h2 class="font-display text-2xl font-bold text-ink">{dict.caseStudy.workHeading}</h2>
+      <ul class="mt-5 max-w-2xl space-y-3 text-base leading-relaxed text-ink/90">
+        {project.responsibilities.map((line) => (
+          <li class="flex gap-3">
+            <span class="mt-[11px] h-px w-4 shrink-0 bg-line-dim" aria-hidden="true" />
+            <span>{line}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="border-b border-grid">
+    <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
+      <h2 class="font-display text-2xl font-bold text-ink">{dict.caseStudy.architectureHeading}</h2>
+      <div class="mt-5 max-w-2xl rounded-sm border border-line/40 bg-surface/50 p-6">
+        <p class="text-base leading-relaxed text-ink/90">{project.architecture}</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
+      <h2 class="font-display text-2xl font-bold text-ink">{dict.caseStudy.screenshotsHeading}</h2>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        {project.screenshots.map((shot) => (
+          <figure>
+            <div class="blueprint-grid relative flex aspect-video items-center justify-center overflow-hidden rounded-sm border border-dashed border-line-dim/60">
+              <span class="font-mono text-[11px] text-ink-dim/70 uppercase tracking-wider">{dict.caseStudy.imagePending}</span>
+            </div>
+            <figcaption class="mt-2 font-mono text-xs text-ink-dim">{shot.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+</main>

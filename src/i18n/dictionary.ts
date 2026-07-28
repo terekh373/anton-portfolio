@@ -1,3 +1,7 @@
+export interface Screenshot {
+  caption: string;
+}
+
 export interface Project {
   title: string;
   subtitle: string;
@@ -8,6 +12,11 @@ export interface Project {
   github: string;
   demo?: string;
   slug: string;
+  metaDescription: string;
+  task: string;
+  responsibilities: string[];
+  architecture: string;
+  screenshots: Screenshot[];
 }
 
 export interface MoreProject {
@@ -59,6 +68,18 @@ export interface Dictionary {
     viewCase: string;
     liveDemo: string;
     projects: Project[];
+  };
+  caseStudy: {
+    backLink: string;
+    taskHeading: string;
+    workHeading: string;
+    architectureHeading: string;
+    stackHeading: string;
+    screenshotsHeading: string;
+    linksHeading: string;
+    githubLink: string;
+    demoLink: string;
+    imagePending: string;
   };
   moreWork: {
     heading: string;
