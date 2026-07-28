@@ -54,44 +54,10 @@ Run from the project root:
 
 Static output, no adapter needed — `@astrojs/vercel` isn't installed and isn't required.
 
-### 1. Push the repo to GitHub
-
-This project is git-initialized locally with commits already made. To publish it under **github.com/terekh373** (the account referenced throughout the site's content):
+Full copy-paste walkthrough (GitHub push → Vercel import → custom domain → post-deploy checklist) is in **[DEPLOYMENT.md](./DEPLOYMENT.md)**. Quick version:
 
 ```sh
-gh auth status                 # confirm you're logged in as terekh373, or:
-gh auth login                  # switch accounts if the CLI is on a different one
-
 gh repo create terekh373/anton-portfolio --public --source=. --remote=origin --push
 ```
 
-No `gh` CLI? Do it via the GitHub UI instead: create a new empty repository at github.com/new under the `terekh373` account (don't initialize it with a README), then:
-
-```sh
-git remote add origin https://github.com/terekh373/anton-portfolio.git
-git push -u origin main
-```
-
-### 2. Import the project in Vercel
-
-1. Go to [vercel.com/new](https://vercel.com/new) and sign in (GitHub OAuth is the easiest — this is the one step that needs your own login, not something scriptable from here).
-2. **Add New → Project → Import Git Repository**, authorize Vercel's GitHub App for the `terekh373/anton-portfolio` repo if prompted, then select it.
-3. Vercel auto-detects the **Astro** framework preset: build command `npm run build`, output directory `dist`, install command `npm install`. Leave these as-is.
-4. No environment variables are needed.
-5. Click **Deploy**. First build takes ~1–2 minutes.
-
-Every subsequent `git push` to `main` auto-deploys to production; pushes to other branches or PRs get their own preview URL.
-
-### 3. Custom domain (once purchased)
-
-1. Project → **Settings → Domains → Add**, enter the domain.
-2. Follow Vercel's DNS instructions at your registrar (typically an `A` record to Vercel's IP or a `CNAME` for a subdomain).
-3. Update the three places listed under **Domain** above, commit, and push — Vercel redeploys automatically with the real URLs baked in.
-
-### 4. Post-deploy checklist
-
-- [ ] `public/cv/Tereshchenko_Anton_Resume_EN.pdf` and `_UA.pdf` exist and download correctly from the live Contact section (not yet added as of this commit)
-- [ ] `/` and `/ua/` both load, language switcher round-trips correctly
-- [ ] `https://<domain>/sitemap-index.xml` and `/robots.txt` resolve
-- [ ] Share the production URL in a chat app or paste it into a social-preview debugger to confirm the OG image renders (can't be checked from `localhost`, since crawlers need a public URL)
-- [ ] Re-run Lighthouse against the **production URL**, not localhost — CDN caching and real TLS typically make this a bit faster, not slower, but confirm the 100s still hold
+...then import the repo at [vercel.com/new](https://vercel.com/new) (Astro preset auto-detected, no env vars needed) and click **Deploy**. Every push to `main` redeploys automatically after that.
