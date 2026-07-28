@@ -1,0 +1,50 @@
+---
+import type { Dictionary } from '../i18n/dictionary';
+import { CONTACT } from '../lib/contact';
+
+interface Props {
+  dict: Dictionary;
+}
+
+const { dict } = Astro.props;
+---
+
+<section id="contact" class="border-b border-grid">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+    <h2 class="font-display text-2xl font-bold text-ink sm:text-3xl">{dict.contact.heading}</h2>
+    <p class="mt-3 max-w-xl text-ink-dim">{dict.contact.intro}</p>
+
+    <div class="mt-10 grid overflow-hidden rounded-sm border border-line/50 sm:grid-cols-2 lg:grid-cols-4">
+      <a
+        href={`mailto:${CONTACT.email}`}
+        class="border-b border-grid p-5 transition-colors hover:bg-surface sm:border-r lg:border-b-0"
+      >
+        <p class="font-mono text-[11px] tracking-[0.15em] text-line uppercase">{dict.contact.emailLabel}</p>
+        <p class="mt-1.5 text-sm break-all text-ink">{CONTACT.email}</p>
+      </a>
+      <a href={`tel:${CONTACT.phone.replace(/\s+/g, '')}`} class="border-b border-grid p-5 transition-colors hover:bg-surface lg:border-r lg:border-b-0">
+        <p class="font-mono text-[11px] tracking-[0.15em] text-line uppercase">{dict.contact.phoneLabel}</p>
+        <p class="mt-1.5 text-sm text-ink">{CONTACT.phone}</p>
+      </a>
+      <a
+        href={CONTACT.github}
+        target="_blank"
+        rel="noreferrer"
+        class="border-b border-grid p-5 transition-colors hover:bg-surface sm:border-r sm:border-b-0"
+      >
+        <p class="font-mono text-[11px] tracking-[0.15em] text-line uppercase">GitHub</p>
+        <p class="mt-1.5 text-sm text-ink">github.com/terekh373</p>
+      </a>
+      <a href={CONTACT.linkedin} target="_blank" rel="noreferrer" class="p-5 transition-colors hover:bg-surface">
+        <p class="font-mono text-[11px] tracking-[0.15em] text-line uppercase">LinkedIn</p>
+        <p class="mt-1.5 text-sm text-ink">anton-tereshchenko-o</p>
+      </a>
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-ink-dim">
+      <span class="tracking-[0.15em] text-line uppercase">{dict.contact.cvLabel}</span>
+      <a href={CONTACT.cvEn} class="transition-colors hover:text-line">{dict.contact.cvEn}</a>
+      <a href={CONTACT.cvUa} class="transition-colors hover:text-line">{dict.contact.cvUa}</a>
+    </div>
+  </div>
+</section>

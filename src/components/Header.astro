@@ -1,0 +1,39 @@
+---
+import type { Locale } from '../i18n/utils';
+import type { Dictionary } from '../i18n/dictionary';
+import { getAlternatePath } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+const { locale, dict } = Astro.props;
+const otherLocale: Locale = locale === 'en' ? 'ua' : 'en';
+const altHref = getAlternatePath(Astro.url.pathname, otherLocale);
+const homeHref = locale === 'en' ? '/' : '/ua/';
+---
+
+<header class="sticky top-0 z-40 border-b border-grid bg-bg">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <a href={homeHref} class="flex items-center gap-2 font-mono text-sm text-ink">
+      <span class="flex h-8 w-8 items-center justify-center rounded-sm border border-line/60 text-line" aria-hidden="true">AT</span>
+      <span class="hidden sm:inline">Anton Tereshchenko</span>
+    </a>
+
+    <nav class="hidden items-center gap-6 font-mono text-xs tracking-wider text-ink-dim uppercase sm:flex" aria-label="Section">
+      <a href="#work" class="transition-colors hover:text-line">{dict.nav.work}</a>
+      <a href="#skills" class="transition-colors hover:text-line">{dict.nav.skills}</a>
+      <a href="#about" class="transition-colors hover:text-line">{dict.nav.about}</a>
+      <a href="#contact" class="transition-colors hover:text-line">{dict.nav.contact}</a>
+    </nav>
+
+    <a
+      href={altHref}
+      hreflang={otherLocale === 'ua' ? 'uk' : 'en'}
+      class="rounded-sm border border-grid px-2.5 py-1.5 font-mono text-xs text-ink-dim transition-colors hover:border-line hover:text-line"
+    >
+      {dict.nav.switchTo}
+    </a>
+  </div>
+</header>

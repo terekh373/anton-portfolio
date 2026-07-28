@@ -1,0 +1,30 @@
+---
+import type { Dictionary } from '../i18n/dictionary';
+
+interface Props {
+  dict: Dictionary;
+}
+
+const { dict } = Astro.props;
+---
+
+<section id="skills" class="border-b border-grid">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+    <h2 class="font-display text-2xl font-bold text-ink sm:text-3xl">{dict.skills.heading}</h2>
+
+    <div class="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        dict.skills.groups.map((group) => (
+          <div>
+            <h3 class="font-mono text-xs tracking-[0.15em] text-line uppercase">{group.label}</h3>
+            <ul class="mt-3 flex flex-wrap gap-1.5">
+              {group.items.map((item) => (
+                <li class="rounded-sm border border-grid px-2.5 py-1 text-sm text-ink/90">{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

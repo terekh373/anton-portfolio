@@ -1,1 +1,61 @@
 @import "tailwindcss";
+
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+@theme {
+  --font-display: "IBM Plex Sans", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --color-bg: #0e2233;
+  --color-surface: #15304a;
+  --color-surface-raised: #1c3c5a;
+  --color-grid: #24435c;
+  --color-line: #6fe7e2;
+  --color-line-dim: #3f7b78;
+  --color-ink: #f3f6f2;
+  --color-ink-dim: #a9bfc9;
+  --color-stamp: #d9714b;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-line);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .blueprint-grid {
+    background-image:
+      linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

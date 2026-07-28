@@ -1,0 +1,13 @@
+---
+import type { Dictionary } from '../i18n/dictionary';
+
+interface Props {
+  dict: Dictionary;
+}
+
+const { dict } = Astro.props;
+---
+
+<footer class="px-4 py-8 text-center sm:px-6">
+  <p class="font-mono text-xs text-ink-dim">{dict.footer.text}</p>
+</footer>

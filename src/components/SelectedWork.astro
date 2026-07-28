@@ -1,0 +1,89 @@
+---
+import type { Dictionary } from '../i18n/dictionary';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  dict: Dictionary;
+  locale: Locale;
+}
+
+const { dict, locale } = Astro.props;
+const caseHref = (slug: string) => (locale === 'en' ? `/work/${slug}/` : `/ua/work/${slug}/`);
+---
+
+<section id="work" class="border-b border-grid">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+    <div class="max-w-2xl">
+      <h2 class="font-display text-2xl font-bold text-ink sm:text-3xl">{dict.work.heading}</h2>
+      <p class="mt-3 text-ink-dim">{dict.work.intro}</p>
+    </div>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-3">
+      {
+        dict.work.projects.map((project) => (
+          <article class="flex flex-col rounded-sm border border-grid bg-surface/50 p-6">
+            <div class="flex items-baseline justify-between gap-3">
+              <h3 class="font-display text-xl font-bold text-ink">{project.title}</h3>
+              <span class="shrink-0 font-mono text-xs text-ink-dim">{project.period}</span>
+            </div>
+            <p class="mt-1 text-sm text-ink-dim">{project.subtitle}</p>
+            <p class="mt-1 font-mono text-xs text-line">{project.role}</p>
+
+            <ul class="mt-4 flex flex-wrap gap-1.5">
+              {project.stack.map((tech) => (
+                <li class="rounded-sm border border-line-dim/50 px-2 py-0.5 font-mono text-[11px] text-ink-dim">{tech}</li>
+              ))}
+            </ul>
+
+            <ul class="mt-5 space-y-2.5 text-sm leading-relaxed text-ink/90">
+              {project.description.map((line) => (
+                <li class="flex gap-2">
+                  <span class="mt-[7px] h-px w-3 shrink-0 bg-line-dim" aria-hidden="true" />
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-grid pt-4 font-mono text-xs">
+              <a href={caseHref(project.slug)} class="text-line transition-colors hover:text-ink">
+                {dict.work.viewCase} &rarr;
+              </a>
+              <a href={project.github} target="_blank" rel="noreferrer" class="text-ink-dim transition-colors hover:text-line">
+                GitHub
+              </a>
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="ml-auto inline-flex items-center gap-1.5 rounded-sm bg-stamp px-2.5 py-1 text-bg"
+                >
+                  <span class="live-dot h-1.5 w-1.5 rounded-full bg-bg" aria-hidden="true" />
+                  {dict.work.liveDemo}
+                </a>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .live-dot {
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.35;
+    }
+  }
+</style>

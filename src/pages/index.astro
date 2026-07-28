@@ -1,16 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import SelectedWork from '../components/SelectedWork.astro';
+import MoreWork from '../components/MoreWork.astro';
+import Skills from '../components/Skills.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 import { getDictionary } from '../i18n/utils';
 
 const dict = getDictionary('en');
 ---
 
 <BaseLayout locale="en" dict={dict}>
-  <main class="min-h-screen flex items-center justify-center">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold">{dict.hero.name}</h1>
-      <p class="mt-2 text-lg">{dict.hero.role}</p>
-      <p class="mt-1 text-sm opacity-70">{dict.hero.location}</p>
-    </div>
+  <Header locale="en" dict={dict} />
+  <main>
+    <Hero dict={dict} />
+    <SelectedWork dict={dict} locale="en" />
+    <MoreWork dict={dict} />
+    <Skills dict={dict} />
+    <About dict={dict} />
+    <Contact dict={dict} />
   </main>
+  <Footer dict={dict} />
 </BaseLayout>

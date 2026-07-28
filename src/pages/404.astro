@@ -1,16 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
 import { getDictionary } from '../i18n/utils';
 
 const dict = getDictionary('en');
 ---
 
-<BaseLayout locale="en" dict={dict} title="404 — Page not found">
-  <main class="min-h-screen flex items-center justify-center">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold">404</h1>
-      <p class="mt-2 text-lg">Page not found.</p>
-      <a href="/" class="mt-4 inline-block underline">Back home</a>
+<BaseLayout locale="en" dict={dict} title={`${dict.notFound.title} — ${dict.meta.title}`}>
+  <Header locale="en" dict={dict} />
+  <main class="blueprint-grid flex min-h-[70vh] items-center justify-center px-4 text-center">
+    <div>
+      <p class="font-mono text-xs tracking-[0.2em] text-line uppercase">Error</p>
+      <h1 class="mt-4 font-display text-6xl font-bold tracking-tight text-ink">{dict.notFound.title}</h1>
+      <p class="mt-4 max-w-sm text-ink-dim">{dict.notFound.body}</p>
+      <a href="/" class="mt-8 inline-flex items-center gap-2 rounded-sm bg-stamp px-5 py-3 font-mono text-sm font-medium text-bg">
+        {dict.notFound.backHome}
+      </a>
     </div>
   </main>
 </BaseLayout>

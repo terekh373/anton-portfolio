@@ -1,0 +1,42 @@
+---
+import type { Dictionary } from '../i18n/dictionary';
+
+interface Props {
+  dict: Dictionary;
+}
+
+const { dict } = Astro.props;
+---
+
+<section class="border-b border-grid">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+    <h2 class="font-display text-2xl font-bold text-ink sm:text-3xl">{dict.moreWork.heading}</h2>
+
+    <div class="mt-8 divide-y divide-grid border-t border-grid">
+      {
+        dict.moreWork.projects.map((project) => (
+          <div class="grid gap-2 py-6 sm:grid-cols-[1fr_2fr] sm:gap-6">
+            <div>
+              <h3 class="font-display text-lg font-bold text-ink">{project.title}</h3>
+              <p class="mt-1 font-mono text-xs text-ink-dim">{project.meta}</p>
+              <p class="mt-1 font-mono text-xs text-line">{project.stack}</p>
+            </div>
+            <div class="flex flex-col justify-between gap-3">
+              <p class="text-sm leading-relaxed text-ink/85">{project.description}</p>
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="font-mono text-xs text-ink-dim transition-colors hover:text-line"
+                >
+                  GitHub &rarr;
+                </a>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
