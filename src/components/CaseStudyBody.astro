@@ -10,6 +10,7 @@ interface Props {
 
 const { dict, locale, project } = Astro.props;
 const backHref = locale === 'en' ? '/#work' : '/ua/#work';
+const shots = project.screenshots.filter((shot) => shot.src);
 ---
 
 <main id="main-content">
@@ -35,6 +36,11 @@ const backHref = locale === 'en' ? '/#work' : '/ua/#work';
           <a href={project.github} target="_blank" rel="noreferrer" class="font-mono text-sm text-ink-dim transition-colors hover:text-line">
             {dict.caseStudy.githubLink} &rarr;
           </a>
+          {project.video && (
+            <a href={project.video} target="_blank" rel="noreferrer" class="font-mono text-sm text-ink-dim transition-colors hover:text-line">
+              {dict.caseStudy.videoLink} &rarr;
+            </a>
+          )}
           {project.demo && (
             <a
               href={project.demo}
@@ -81,19 +87,27 @@ const backHref = locale === 'en' ? '/#work' : '/ua/#work';
     </div>
   </section>
 
-  <section>
-    <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
-      <h2 class="font-display text-2xl font-bold text-ink">{dict.caseStudy.screenshotsHeading}</h2>
-      <div class="mt-6 grid gap-6 sm:grid-cols-2">
-        {project.screenshots.map((shot) => (
-          <figure>
-            <div class="blueprint-grid relative flex aspect-video items-center justify-center overflow-hidden rounded-sm border border-dashed border-line-dim/60">
-              <span class="font-mono text-[11px] text-ink-dim/70 uppercase tracking-wider">{dict.caseStudy.imagePending}</span>
-            </div>
-            <figcaption class="mt-2 font-mono text-xs text-ink-dim">{shot.caption}</figcaption>
-          </figure>
-        ))}
+  {shots.length > 0 && (
+    <section>
+      <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
+        <h2 class="font-display text-2xl font-bold text-ink">{dict.caseStudy.screenshotsHeading}</h2>
+        <div class={`mt-6 grid gap-6 ${shots.length > 1 ? 'sm:grid-cols-2' : ''}`}>
+          {shots.map((shot) => (
+            <figure>
+              <img
+                src={shot.src}
+                alt={shot.caption}
+                width={shot.width}
+                height={shot.height}
+                loading="lazy"
+                decoding="async"
+                class="w-full rounded-sm border border-line-dim/60"
+              />
+              <figcaption class="mt-2 font-mono text-xs text-ink-dim">{shot.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 </main>

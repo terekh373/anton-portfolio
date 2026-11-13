@@ -1,5 +1,9 @@
 export interface Screenshot {
   caption: string;
+  /** Path under public/, e.g. /work/vexa-home.webp. Shots without src are not rendered. */
+  src?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface Project {
@@ -11,6 +15,7 @@ export interface Project {
   description: string[];
   github: string;
   demo?: string;
+  video?: string;
   slug: string;
   metaDescription: string;
   task: string;
@@ -67,6 +72,7 @@ export interface Dictionary {
     intro: string;
     viewCase: string;
     liveDemo: string;
+    video: string;
     projects: Project[];
   };
   caseStudy: {
@@ -79,7 +85,7 @@ export interface Dictionary {
     linksHeading: string;
     githubLink: string;
     demoLink: string;
-    imagePending: string;
+    videoLink: string;
   };
   moreWork: {
     heading: string;

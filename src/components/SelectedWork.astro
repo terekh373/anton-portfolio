@@ -51,6 +51,11 @@ const caseHref = (slug: string) => (locale === 'en' ? `/work/${slug}/` : `/ua/wo
               <a href={project.github} target="_blank" rel="noreferrer" class="text-ink-dim transition-colors hover:text-line">
                 GitHub
               </a>
+              {project.video && (
+                <a href={project.video} target="_blank" rel="noreferrer" class="text-ink-dim transition-colors hover:text-line">
+                  {dict.work.video}
+                </a>
+              )}
               {project.demo && (
                 <a
                   href={project.demo}
